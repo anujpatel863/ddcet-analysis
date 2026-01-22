@@ -5,7 +5,7 @@ import { DataTable } from './components/DataTable';
 import { Filters } from './components/Filters';
 import type { FilterState, SortField, SortOrder } from './types';
 import { filterData, sortData } from './utils';
-import { FileText, Github } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 import { TableSkeleton } from './components/ui/Skeleton';
 
