@@ -8,7 +8,7 @@ export const useData = () => {
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch('/data.json')
+        fetch('data.json')
             .then(res => res.json())
             .then((jsonData: RawInstituteData[]) => {
                 const cleaned = cleanAndTransformData(jsonData);
