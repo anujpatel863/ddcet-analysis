@@ -7,6 +7,10 @@ import type { FilterState, SortField, SortOrder } from './types';
 import { filterData, sortData } from './utils';
 import { FileText, Github } from 'lucide-react';
 
+import { TableSkeleton } from './components/ui/Skeleton';
+
+// ... (existing imports)
+
 function App() {
   const { data, loading, error } = useData();
 
@@ -40,7 +44,25 @@ function App() {
     }
   };
 
-  if (loading) return <div className="flex h-screen items-center justify-center text-lg">Loading data...</div>;
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-50 p-6">
+        <div className="max-w-7xl mx-auto">
+          <header className="mb-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
+            {/* Header Skeleton */}
+            <div className="flex items-center gap-3 animate-pulse">
+              <div className="w-12 h-12 bg-gray-200 rounded-lg"></div>
+              <div>
+                <div className="h-6 w-48 bg-gray-200 rounded mb-2"></div>
+                <div className="h-4 w-32 bg-gray-200 rounded"></div>
+              </div>
+            </div>
+          </header>
+          <TableSkeleton />
+        </div>
+      </div>
+    );
+  }
   if (error) return <div className="flex h-screen items-center justify-center text-red-500">Error: {error}</div>;
 
   return (
